@@ -1,3 +1,4 @@
+//IMPORTS//
 import React from 'react'
 import '../NavBar/NavBar.scss'
 import AppBar from '@mui/material/AppBar';
@@ -8,58 +9,68 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import Helvetica97 from "../../assets/Fonts/helvetica97-condensedblack-oblique.ttf"
+import { Logo } from "./Logo";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+
+
+
+
+
+
+
+//COMPONENT NAVBAR
 
 const pages = ['About us', 'Shoes', 'T-shirts','Hoods','Contact Us'];
-const settings = ['Profile', 'Cart','Logout'];
+
 
 export  function NavBar() {
     
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+  
   
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
-      setAnchorElUser(event.currentTarget);
-    };
-  
-    const handleCloseNavMenu = () => {
+   
+   const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
   
-    const handleCloseUserMenu = () => {
-      setAnchorElUser(null);
-    };
+ 
 
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" color='primary'>
+      
       <Container maxWidth="xl">
+        
         <Toolbar disableGutters>
+        <Logo/>
           
           <Typography
+           
             variant="h6"
             noWrap
             component="a"
             href="/"
+            color ='secondary'
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: {Helvetica97},
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              letterSpacing: '.2rem',
               textDecoration: 'none',
             }}
           >
-            Palace
+          PALACE
           </Typography>
+
+           
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -92,7 +103,7 @@ export  function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" >{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -101,22 +112,22 @@ export  function NavBar() {
           <Typography
             variant="h5"
             noWrap
+            color='secondary'
             component="a"
             href=""
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: {Helvetica97},
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              letterSpacing: '.2rem',
               textDecoration: 'none',
             }}
           >
-          Palace
+          PALACE
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "center" }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -129,34 +140,10 @@ export  function NavBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <IconButton color="inherit"  component="label" size= "large">
+          <ShoppingCartIcon/>
+          </IconButton>
+         </Box>
         </Toolbar>
       </Container>
     </AppBar>
