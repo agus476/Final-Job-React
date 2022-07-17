@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Helvetica97 from "../../assets/Fonts/helvetica97-condensedblack-oblique.ttf"
 import { Logo } from "./Logo";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { CartWidget } from './CartWidget';
 
 
 
@@ -141,7 +141,7 @@ export  function NavBar() {
 
           <Box sx={{ flexGrow: 0 }}>
           <IconButton color="inherit"  component="label" size= "large">
-          <ShoppingCartIcon/>
+          <CartWidget/>
           </IconButton>
          </Box>
         </Toolbar>
