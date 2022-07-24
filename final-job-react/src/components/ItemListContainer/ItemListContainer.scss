@@ -1,0 +1,25 @@
+.list-products{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+
+
+}
+
+.ClotheName{
+
+margin: 25px ;
+padding: 25px;
+
+
+
+}
+
+
+.ItemContainer{
+
+display: grid;
+grid-template-rows: 35rem;
+grid-template-columns: 22rem 22rem ;
+
+}

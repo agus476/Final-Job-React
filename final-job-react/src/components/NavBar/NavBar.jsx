@@ -24,7 +24,7 @@ import { CartWidget } from './CartWidget';
 
 //COMPONENT NAVBAR
 
-const pages = ['About us', 'Shoes', 'T-shirts','Hoods','Contact Us'];
+const pages = ['About us', 'Hats', 'T-shirts','Hoods','Contact Us'];
 
 
 export  function NavBar() {
