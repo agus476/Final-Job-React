@@ -1,30 +1,56 @@
-import React from 'react'
-import ItemProduct from "../ItemProduct/ItemProduct"
+import React, {useState, useEffect}from 'react'
 import './ItemListContainer.scss'
+import products from '../../utils/products.mock'
+import ItemList from '../ItemList/ItemList'
 
 
 
 export  function ItemListContainer({article}) {
 
-  const hat1 = {
-        title: "Cristop grid 4G",
-        price: 7629,
-        img:"https://cdn.shopify.com/s/files/1/0305/3289/products/Palace_Summer_22_cap_tri_ferg_cripstop_nvy_1953_640x@2x.jpg?v=1655404370",
-        stock: 25
-        
+ const [listClothes, setlistClothes] = useState([])
+
+
+  const getProducts  = () => new Promise ((resolve, reject)=>{
+      setTimeout(() =>{
+     
+        resolve (products)
+
+      }, 2000)
+     
+  })
+
+
+
+
+
+  useEffect(() => {
+    const getProduct = async () => {
+
+      try{
+     
+          const responseLog = await getProducts()
+          
+          setlistClothes(responseLog)
+      }
+
+
+      catch(error){
+
+         console.log(error)
+
+      }
 
 
   }
 
-  const hat2 = {
-    title: "Semi mosh pal hat white",
-    price: 7162,
-    img:"https://cdn.shopify.com/s/files/1/0305/3289/products/Palace_Summer_22_6_panel_mesh_wht_2858_640x@2x.jpg?v=1651820070",
-    stock: 12
-    
 
+    getProduct()
+  
+  }, [])
 
-}
+  
+
+ 
 
 
 
@@ -32,13 +58,12 @@ export  function ItemListContainer({article}) {
     <div className='list-products'>
           <h2 className='ClotheName'>{article}</h2>
              
-        <div className='ItemContainer'>
+          <div className='ItemContainer'>
                 
-               <ItemProduct data ={hat1} />
-               <ItemProduct data ={hat2} />
-
-           
-          </div>
+                <ItemList dataProducts={listClothes}/>
+    
+               
+         </div>
                
          
              
