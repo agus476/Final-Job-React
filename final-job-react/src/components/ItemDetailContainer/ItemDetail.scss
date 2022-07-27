@@ -1,0 +1,34 @@
+.item-detail-container{
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin-top: 50px;
+
+    img{
+      height: 500px;
+      width: 400px;
+      margin: 50px;
+    }
+
+.productDescription{
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    .price{
+
+        font-size: 25px;
+        margin-bottom: 15px;
+    
+    }
+    .stock{
+ 
+      padding: 10px;
+
+    }
+
+}
+
+  
+
+}
