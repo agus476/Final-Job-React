@@ -12,31 +12,26 @@ const ItemCount = ({stock}) => {
     const [inCart, setIncart] = useState(1) 
 
 
-    const AddQ = () => {
-    if (initialStock > inCart){
-      setIncart( inCart + 1)
+    const HandleQ = (i) => {
+    if (initialStock){
+      setIncart( inCart + i)
       } 
         
      }
 
 
   
-      const RemoveQ = () => {
-     if ( inCart > 1)
-    setIncart( inCart - 1)
- 
-   }
-
+    
 
 
    return(
 
     <div className='buyButtons'>
-       <IconButton  onClick={RemoveQ} size="small">
+       <IconButton  onClick ={() => HandleQ(-1)} size="small" disabled={ inCart === 1}>
         <RemoveIcon/>
        </IconButton>
        <span className='quantity'>{inCart}</span>
-       <IconButton  onClick={AddQ} size="small">
+       <IconButton  onClick ={() => HandleQ(1)} size="small" disabled={ inCart === initialStock}>
         <AddIcon/>
        </IconButton>
        </div>

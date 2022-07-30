@@ -14,6 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Helvetica97 from "../../assets/Fonts/helvetica97-condensedblack-oblique.ttf"
 import { Logo } from "./Logo";
 import { CartWidget } from './CartWidget';
+import {Link} from 'react-router-dom'
+
 
 
 
@@ -24,7 +26,7 @@ import { CartWidget } from './CartWidget';
 
 //COMPONENT NAVBAR
 
-const pages = ['About us', 'Hats', 'T-shirts','Hoods','Contact Us'];
+const pages = ['About Us', 'Hats', 'T-shirts','Hoods','Contact Us'];
 
 
 export  function NavBar() {
@@ -49,7 +51,9 @@ export  function NavBar() {
       <Container maxWidth="xl">
         
         <Toolbar disableGutters>
-        <Logo/>
+      <Link to = "/">
+      <Logo/>
+      </Link>
           
           <Typography
            
@@ -103,7 +107,7 @@ export  function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" >{page}</Typography>
+                  <Typography textAlign="center" ><Link style ={{textDecoration: "none",color: "white"}}to = {`/${page}`}>{page} </Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -129,13 +133,17 @@ export  function NavBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "center" }}>
             {pages.map((page) => (
+              
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >
+              > <Link  style ={{textDecoration: "none", color: "white"}}to = {`/${page}`}>
                 {page}
+              </Link>
+                
               </Button>
+              
             ))}
           </Box>
 
