@@ -10,18 +10,20 @@ const ItemDetailContainer = () => {
 
 const [Item, setItem] = useState([])
 const {id} = useParams()
-const filterId = product.filter( product => product.id === id )
+const filterId = product.filter( (product) => product.id === Number(id) )
 
 
   const getItem  = () => new Promise ((resolve, reject)=>{
       setTimeout(() =>{
      
         resolve (filterId[0])
-
+         
       }, 2000)
      
   })
 
+
+  
   
   
 
@@ -55,7 +57,7 @@ const filterId = product.filter( product => product.id === id )
   
 
  
-
+  
 
 
   return (

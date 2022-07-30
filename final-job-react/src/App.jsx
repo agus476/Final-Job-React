@@ -1,7 +1,7 @@
 import React from "react";
 import { NavBar } from "./components/NavBar/NavBar";
 import Home from "./pages/Home";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+
 import AboutUs from './pages/AboutUs'
 import{BrowserRouter, Routes, Route} from 'react-router-dom'
 import Detail from "./pages/Detail";
