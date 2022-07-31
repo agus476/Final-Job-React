@@ -12,7 +12,7 @@ Solo disponible desde clonacion.
 
 ## Dependencias utilizadas
 
-En este proyecto se utilizaron todas las dependencias trabajadas en clase, las unicas dependencias externas utilizadas en dicho proyecto son:
+En este proyecto se utilizaron todas las dependencias trabajadas en clase, las unicas dependencias externas utilizadas son:
 
 ### Material ui 
  
@@ -27,4 +27,6 @@ En este proyecto se utilizaron todas las dependencias trabajadas en clase, las u
                         npm i swiper
 
 
-                        
+## Licencia 
+
+    All rigths reserved to Agustin Sanchez
