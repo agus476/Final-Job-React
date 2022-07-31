@@ -14,7 +14,7 @@ const ItemProduct = ({data}) => {
    
    return (
 
-    <Link to = {`/product/${id}`} >
+    <Link  style = {{textDecoration: "none", color: 'black'}}to = {`/product/${id}`} >
     <div className='item-product'>
           
           <img className='hatImage' src={img} alt="Hat img" />

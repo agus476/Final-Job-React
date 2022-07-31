@@ -52,7 +52,8 @@ const filterId = product.filter( (product) => product.id === Number(id) )
 
     ItemAwait()
   
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  
 
   
 
