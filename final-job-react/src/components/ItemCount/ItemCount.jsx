@@ -3,10 +3,12 @@ import { IconButton } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import './ItemCount.scss'
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Button from '@mui/material/Button';
 
 
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({stock,setQuantitySelected }) => {
  
     let initialStock = stock
     const [inCart, setIncart] = useState(1) 
@@ -19,7 +21,11 @@ const ItemCount = ({stock}) => {
         
      }
 
-
+   const onAdd = () => {
+       
+    setQuantitySelected(inCart)
+    
+   }
   
     
 
@@ -34,6 +40,8 @@ const ItemCount = ({stock}) => {
        <IconButton  onClick ={() => HandleQ(1)} size="small" disabled={ inCart === initialStock}>
         <AddIcon/>
        </IconButton>
+       <Button  onClick = {onAdd}variant="outlined" endIcon={<ShoppingCartIcon/>}>
+           Add to cart</Button>  
        </div>
 
 
