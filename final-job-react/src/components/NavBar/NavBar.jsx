@@ -148,9 +148,9 @@ export  function NavBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          <IconButton color="inherit"  component="label" size= "large">
+          
           <CartWidget/>
-          </IconButton>
+        
          </Box>
         </Toolbar>
       </Container>

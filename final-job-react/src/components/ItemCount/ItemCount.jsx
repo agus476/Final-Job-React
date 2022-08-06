@@ -8,8 +8,11 @@ import Button from '@mui/material/Button';
 
 
 
+
 const ItemCount = ({stock,setQuantitySelected }) => {
  
+  
+    
     let initialStock = stock
     const [inCart, setIncart] = useState(1) 
 
@@ -22,17 +25,21 @@ const ItemCount = ({stock,setQuantitySelected }) => {
      }
 
    const onAdd = () => {
+
+   
        
     setQuantitySelected(inCart)
     
    }
+
   
     
 
 
    return(
-
-    <div className='buyButtons'>
+           <>
+           
+           <div className='buyButtons'>
        <IconButton  onClick ={() => HandleQ(-1)} size="small" disabled={ inCart === 1}>
         <RemoveIcon/>
        </IconButton>
@@ -40,9 +47,18 @@ const ItemCount = ({stock,setQuantitySelected }) => {
        <IconButton  onClick ={() => HandleQ(1)} size="small" disabled={ inCart === initialStock}>
         <AddIcon/>
        </IconButton>
-       <Button  onClick = {onAdd}variant="outlined" endIcon={<ShoppingCartIcon/>}>
-           Add to cart</Button>  
+        
        </div>
+
+      <Button  onClick = {onAdd}variant="outlined" endIcon={<ShoppingCartIcon/>}>
+          Add to cart</Button> 
+           
+           
+           
+           
+           </>
+    
+
 
 
    )

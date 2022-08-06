@@ -3,7 +3,7 @@ import { ItemListContainer } from '../components/ItemListContainer/ItemListConta
 
 const Home = ( ) => {
   return (
-    <ItemListContainer/>
+    <ItemListContainer categoryParam=''/>
   )
 }
 

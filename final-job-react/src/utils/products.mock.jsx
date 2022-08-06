@@ -97,6 +97,18 @@ const products = [
 
 },
 
+{
+
+    id: 220,
+    title: "Buzo 1",
+    category: "Hoods",
+    price: 45521,
+    img:"https://images.palaceskateboards.com/wp-content/uploads/2022/07/Palace_2021_Holiday_Hood_stitch_logo_navy_7450-1024x717.jpg",
+    stock: 25
+
+
+},
+
 
 
 ]

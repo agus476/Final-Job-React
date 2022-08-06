@@ -18,16 +18,19 @@ export  function ItemListContainer({article}) {
   const getProducts  = () => new Promise ((resolve, reject)=>{
       setTimeout(() =>{
 
-        if (categoryid === "Hats" || categoryid === "T-shirts"){
+        if (categoryid){
 
-            resolve (filterByCategory)
+          resolve (filterByCategory)
 
+            
         }
 
 
         
         else{
+              
               resolve (products)
+
           
         }
         
