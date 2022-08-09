@@ -12,7 +12,7 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 export  function CartWidget() {
 
 
-   const {cartProducts} = useContext(CartContext)
+   const {cartProducts ,delteAll, removefromCart } = useContext(CartContext)
 
 
  
@@ -62,7 +62,7 @@ export  function CartWidget() {
                 cartProducts.map((product)  =>
                 (
                            
-                            <>
+                            
                            
                          <div className='item-cart-product' key={product.id}>
                             <img src={`${product.img}`} alt="" />
@@ -74,13 +74,13 @@ export  function CartWidget() {
                                 <p>$ {product.price}</p>
                             </div>
                             <div className='cart-product__action'>
-                                <DeleteIcon />
+                                <IconButton onClick={()=>removefromCart(product.id)}><DeleteIcon /></IconButton>
                             </div>
 
                         </div>
                        
-                            </>  
-                      
+                            
+              
          ))
 
                 : <div className='cartEmpty'>
@@ -98,7 +98,7 @@ export  function CartWidget() {
 { cartProducts.length > 0 &&
 
 <div className='deleteAll'>
-<Button variant="outlined" startIcon={<DeleteIcon />}>Delete all</Button>
+<Button  onClick = {delteAll}variant="outlined" startIcon={<DeleteIcon />}>Delete all</Button>
 </div>
 
 

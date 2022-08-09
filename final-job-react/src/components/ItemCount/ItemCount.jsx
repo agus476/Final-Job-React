@@ -11,7 +11,7 @@ import { CartContext } from "../../context/CartContext";
 
 
 
-const ItemCount = ({stock, setQuantitySelected, Productdata }) => {
+const ItemCount = ({stock , productdata }) => {
  
 
   
@@ -32,8 +32,7 @@ const {addToCart} = useContext(CartContext)
    const onAdd = () => {
 
     
-    addToCart(Productdata)
-    setQuantitySelected(inCart)
+    addToCart({...productdata, quantity: inCart})
     
     
    }

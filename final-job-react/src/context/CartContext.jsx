@@ -11,16 +11,55 @@ const CartProvider = ({children}) => {
 
     
 
+    
+
     const addToCart = (product) => {
 
+
+        const productInCart = cartProducts.some( item => item.id === product.id )
         
-        setcartProducts([...cartProducts, product])
+         if (productInCart === true){
+
+         const copyArray = cartProducts.map ((item) => {
+            
+            if(item.id === product.id){
+                return {
+                    ...item,
+                    quantity: item.quantity + product.quantity,
+                }
+
+            }
+            
+
+           else{
+
+              return item
+
+            }})
+            setcartProducts(copyArray)}
+
+
+         else{
+            setcartProducts([...cartProducts, product])
+        
+
+         }
+
+
+
+         
+
+         
+
+
+     
+        
         
   
       }
 
 
-      console.log(cartProducts)
+      
     
     const delteAll = () => [setcartProducts ([])]
 
@@ -32,6 +71,7 @@ const CartProvider = ({children}) => {
         const newCart = cartProducts.filter(product => product.id !== id)
 
         setcartProducts (newCart)
+
 
 
     }
