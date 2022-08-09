@@ -1,17 +1,22 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { IconButton } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import './ItemCount.scss'
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Button from '@mui/material/Button';
+import { CartContext } from "../../context/CartContext";
 
 
 
 
-const ItemCount = ({stock,setQuantitySelected }) => {
+
+const ItemCount = ({stock, setQuantitySelected, Productdata }) => {
  
+
   
+
+const {addToCart} = useContext(CartContext)
     
     let initialStock = stock
     const [inCart, setIncart] = useState(1) 
@@ -26,9 +31,10 @@ const ItemCount = ({stock,setQuantitySelected }) => {
 
    const onAdd = () => {
 
-   
-       
+    
+    addToCart(Productdata)
     setQuantitySelected(inCart)
+    
     
    }
 

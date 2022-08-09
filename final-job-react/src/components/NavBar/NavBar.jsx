@@ -107,7 +107,7 @@ export  function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" ><Link style ={{textDecoration: "none",color: "white"}}to = {`/category/${page}`}>{page} </Link></Typography>
+                  <Typography textAlign="center" ><Link style ={{textDecoration: "none",color: "white"}}to = {`/${page}`}>{page} </Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -138,7 +138,7 @@ export  function NavBar() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              > <Link  style ={{textDecoration: "none", color: "white"}}to = {`/category/${page}`}>
+              > <Link  style ={{textDecoration: "none", color: "white"}}to = {`/${page}`}>
                 {page}
               </Link>
                 

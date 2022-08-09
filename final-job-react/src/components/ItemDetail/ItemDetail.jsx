@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
+
+
 
 
 
@@ -22,15 +23,15 @@ return(
           <span className="stock">Available stock = {stock}</span>
            
 
-          {console.log("quantitySelected: ", quantitySelected)}
+  
 
           
           {
             
               
-            quantitySelected > 1 ? <Button><Link to = "/cart">Buy</Link></Button> : 
-            <ItemCount   stock={stock} setQuantitySelected={setQuantitySelected}/>
-
+            quantitySelected > stock? <Button>Buy</Button> : 
+            <ItemCount   stock={stock}  setQuantitySelected = {setQuantitySelected} Productdata = {product}/>
+             
           }
            
            </div>

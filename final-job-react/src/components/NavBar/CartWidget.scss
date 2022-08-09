@@ -1,0 +1,54 @@
+.titleContainer{
+ display: flex;
+ justify-content: center;
+ border-bottom: 5px solid black;
+.name{
+   padding-bottom: 7px;
+  font-weight: bold;
+}
+
+
+}
+
+
+.item-cart-product{
+
+border: 5px solid black;
+width: 43.75rem;
+height: 25rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+img{
+    
+height: 300px;
+width: 300px;
+
+}
+
+
+
+
+
+}
+
+
+.cartEmpty{
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: 19.75rem;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.deleteAll{
+  display: flex;
+  justify-content: center;
+
+  
+}
+

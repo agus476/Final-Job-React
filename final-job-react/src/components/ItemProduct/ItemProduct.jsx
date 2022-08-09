@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemCount from '../ItemCount/ItemCount';
+
 import './ItemProduct.scss'
 import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const ItemProduct = ({data}) => {
     
-  const {id ,title , price , img, stock} = data 
+  const {id ,title , price , img,} = data 
 
    
    return (
@@ -18,7 +18,7 @@ const ItemProduct = ({data}) => {
           <img className='hatImage' src={img} alt="Hat img" />
           <p>{title}</p>
           <span className='price'>${price}</span>
-           <ItemCount stock={stock}></ItemCount>
+           
         
    
        </div>

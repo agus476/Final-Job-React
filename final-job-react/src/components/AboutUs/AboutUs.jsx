@@ -28,7 +28,7 @@ export  function AboutUs() {
         slot="container-start"
         className="parallax-bg"
         style={{
-          "background-image":
+          "backgroundImage":
             "url(https://www.bonkers-shop.com/wp-content/uploads/palace-skateboards-1440-480.jpg)",
         }}
         data-swiper-parallax="-23%"
