@@ -16,13 +16,8 @@ import "../Cart/Cart.scss"
 
 const Cart  = () =>{
 
-const {cartProducts ,delteAll, removefromCart, totalPrice, contador } = useContext(CartContext)
+const {cartProducts ,delteAll, removefromCart, totalPrice, contador} = useContext(CartContext)
 
-const buttons = [
-  <Button key="+">+</Button>,
-  <Button key="a">{contador}</Button>,
-  <Button key="-">-</Button>,
-];
 
 
 
@@ -56,19 +51,22 @@ return (
                                       <div className='cart-product__details'>
                                           <p>{product.title}</p>
                                           <p>TAMAÑO : XS</p>
-                                          <p>quantity : {product.quantity}</p>
+                                         
                                       </div>
                                       <div className="buttons-selection">
                                         
                                         <Box sx={{display: 'flex','& > *': {m: 1,},}}>
-                                            <ButtonGroup orientation="vertical" aria-label="vertical contained button group" variant="contained">{buttons}
+                                            <ButtonGroup orientation="vertical" aria-label="vertical contained button group" variant="contained">
+                                              <Button>+</Button>
+                                              <Button>{product.quantity}</Button>
+                                              <Button>-</Button>
                                             </ButtonGroup>
                                             
                                             </Box>
 
                                         </div>
                                       <div className='cart-product__details'>
-                                          <p>$ {product.price}</p>
+                                          <p>$ {product.price * product.quantity}</p>
                                       </div>
                                       <div className='cart-product__action'>
                                         
@@ -126,10 +124,11 @@ return (
 
       
 
-
-
+     <Button onClick = {delteAll}>delete</Button>
+     
 
     </div>
+    
  </>
 
 

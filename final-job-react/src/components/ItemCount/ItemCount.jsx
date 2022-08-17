@@ -6,17 +6,21 @@ import './ItemCount.scss'
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Button from '@mui/material/Button';
 import { CartContext } from "../../context/CartContext";
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import { Link } from 'react-router-dom';
 
 
 
 
 
-const ItemCount = ({stock , productdata }) => {
+const ItemCount = ({productdata }) => {
  
+
+  const { stock } = productdata;
 
   
 
-const {addToCart} = useContext(CartContext)
+const {addToCart, setcontador , contador} = useContext(CartContext)
     
     let initialStock = stock
     const [inCart, setIncart] = useState(1) 
@@ -33,6 +37,8 @@ const {addToCart} = useContext(CartContext)
 
     
     addToCart({...productdata, quantity: inCart})
+    setcontador(contador + inCart)
+    
     
 
    }
@@ -54,9 +60,11 @@ const {addToCart} = useContext(CartContext)
        </IconButton>
         
        </div>
+       
 
       <Button  onClick = {onAdd}variant="outlined" endIcon={<ShoppingCartIcon/>}>
           Add to cart</Button> 
+      <Button  variant="outlined" startIcon={<ShoppingBagIcon />}><Link to ="/cart"style ={{textDecoration: "none", color: "Black"}}>Checkout</Link></Button>
            
            
            

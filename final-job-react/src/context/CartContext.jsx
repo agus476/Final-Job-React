@@ -6,7 +6,7 @@ const CartContext = createContext()
 
 const CartProvider = ({children}) => {
 
-    const [contador, setcontador] = useState(0)
+    const [contador, setcontador] = useState(1)
     const [totalPrice, settotalPrice] = useState(0)
     const [cartProducts, setcartProducts] = useState([])
 
@@ -19,9 +19,9 @@ const CartProvider = ({children}) => {
     const addToCart = (product) => {
 
 
-        const productInCart = cartProducts.some( item => item.id === product.id )
+        const productInCart = cartProducts.find( item => item.id === product.id )
         
-         if (productInCart === true){
+         if (productInCart){
 
          const copyArray = cartProducts.map ((item) => {
             
@@ -38,10 +38,13 @@ const CartProvider = ({children}) => {
 
               return item
 
+              
+
             }})
 
             
             setcartProducts(copyArray)}
+
 
 
          else{
@@ -50,8 +53,9 @@ const CartProvider = ({children}) => {
 
          }
         
-        setcontador(contador + 1)
+        
         settotalPrice(totalPrice + product.quantity * product.price)
+        
         console.log(contador)
  
         
@@ -83,10 +87,10 @@ const CartProvider = ({children}) => {
     const removefromCart = (id) =>{  
 
         const newCart = cartProducts.filter(product => product.id !== id)
-        const prod = cartProducts.find(product => product.id == id)
+        const prod = cartProducts.find(product => product.id === id)
 
         settotalPrice (totalPrice - prod.quantity * prod.price)
-        setcontador(contador - prod.quantity)
+     
 
         setcartProducts (newCart)
 
@@ -99,14 +103,14 @@ const CartProvider = ({children}) => {
     
     
     const data ={
-
-    
         cartProducts,
         setcartProducts,
         addToCart,
         delteAll,
         removefromCart,
         totalPrice,
+        contador,
+        setcontador,
     }
 
 

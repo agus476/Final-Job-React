@@ -18,7 +18,7 @@ const filterId = product.find(product => product.id === Number(id) )
      
         resolve (filterId)
          
-      }, 2000)
+      }, 0)
      
   })
 

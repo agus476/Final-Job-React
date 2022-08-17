@@ -35,7 +35,7 @@ export  function ItemListContainer({article}) {
         }
         
 
-      }, 2000)
+      }, 0)
      
   })
 

@@ -17,7 +17,7 @@ const ItemDetail = ({ product }) => {
 
         
           <ItemCount
-            stock={stock}
+            
             productdata={product}
           />
       
