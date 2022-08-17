@@ -34,7 +34,7 @@ const {addToCart} = useContext(CartContext)
     
     addToCart({...productdata, quantity: inCart})
     
-    
+
    }
 
   

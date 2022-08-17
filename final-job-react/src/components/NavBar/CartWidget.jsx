@@ -8,6 +8,8 @@ import "../NavBar/CartWidget.scss"
 import { CartContext } from '../../context/CartContext';
 import Button from '@mui/material/Button';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import { Link } from 'react-router-dom';
 
 export  function CartWidget() {
 
@@ -69,11 +71,13 @@ export  function CartWidget() {
                             <div className='cart-product__details'>
                                 <p>{product.title}</p>
                                 <p>TAMAÑO : XS</p>
+                                <p>quantity : {product.quantity}</p>
                             </div>
                             <div className='cart-product__details'>
                                 <p>$ {product.price}</p>
                             </div>
                             <div className='cart-product__action'>
+                              
                                 <IconButton onClick={()=>removefromCart(product.id)}><DeleteIcon /></IconButton>
                             </div>
 
@@ -98,6 +102,7 @@ export  function CartWidget() {
 { cartProducts.length > 0 &&
 
 <div className='deleteAll'>
+<Button  variant="outlined" startIcon={<ShoppingBagIcon />}><Link to ="/cart"style ={{textDecoration: "none", color: "Black"}}>Checkout</Link></Button>
 <Button  onClick = {delteAll}variant="outlined" startIcon={<DeleteIcon />}>Delete all</Button>
 </div>
 
