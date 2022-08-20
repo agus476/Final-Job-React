@@ -1,72 +1,68 @@
 import React, {useState, useEffect}from 'react'
 import './ItemListContainer.scss'
-import products from '../../utils/products.mock'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-
+import { collection, getDocs, where , query} from 'firebase/firestore'
+import db from '../../utils/firebaseConfig'
 
 
 export  function ItemListContainer({article}) {
 
  const [listClothes, setlistClothes] = useState([])
  const {categoryid} = useParams()
- const filterByCategory = products.filter((products) => products.category === categoryid)
+
  
  
 
 
-  const getProducts  = () => new Promise ((resolve, reject)=>{
-      setTimeout(() =>{
+  const getProducts= async () => {
 
-        if (categoryid){
+    const productCollection = categoryid ? query(collection(db ,'products'),where("category", "==", categoryid))
 
-          resolve (filterByCategory)
+    :
+    collection(db ,'products')
+    const productSnapshot =  await getDocs(productCollection)
+    const productList = productSnapshot.docs.map((doc)=>{
 
-            
-        }
+       let product = doc.data()
+       product.id = doc.id
+       return product
 
-
-        
-        else{
-              
-              resolve (products)
-
-          
-        }
-        
-
-      }, 0)
-     
-  })
-
-
-
-
-
-  useEffect(() => {
-    const getProduct = async () => {
-
-      try{
-     
-          const responseLog = await getProducts()
-          
-          setlistClothes(responseLog)
-      }
-
-
-      catch(error){
-
-         console.log(error)
-
-      }
-
-
+    })
+    
+    return productList
   }
 
 
-    getProduct()
   
-  }, )
+
+
+  useEffect(() => {
+
+
+    const getProduct = async () =>{
+      try{
+        const resLog = await getProducts()
+        setlistClothes(resLog)
+ 
+
+ }
+
+
+ catch(error){
+          
+       console.log(error)
+ }
+ 
+
+
+
+    }
+
+    getProduct()
+    
+    
+  },[categoryid] )  // eslint-disable-line react-hooks/exhaustive-deps
 
   
 

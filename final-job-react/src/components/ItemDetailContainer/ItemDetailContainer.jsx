@@ -1,8 +1,9 @@
 import React,{useState, useEffect} from "react";
-import product from '../../utils/products.mock'
+import { doc, getDoc } from "firebase/firestore";
 import "./ItemDetailContainer.scss"
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
+import db from "../../utils/firebaseConfig";
 
 
 const ItemDetailContainer = () => {
@@ -10,17 +11,17 @@ const ItemDetailContainer = () => {
 
 const [Item, setItem] = useState([])
 const {id} = useParams()
-const filterId = product.find(product => product.id === Number(id) )
 
 
-  const getItem  = () => new Promise ((resolve, reject)=>{
-      setTimeout(() =>{
-     
-        resolve (filterId)
-         
-      }, 0)
-     
-  })
+
+  const getItem  = async() => {
+
+   const docRef = doc(db, "products", id)
+   const docSnap = await getDoc(docRef)
+   const product = {...docSnap.data(),id: docSnap.id }
+
+    return product
+  }
 
 
   
