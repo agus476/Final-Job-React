@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext , useState} from "react";
 import callout from "../../assets/callout.png"
 import { CartContext } from "../../context/CartContext";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,8 +7,11 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
-
 import "../Cart/Cart.scss"
+import Modal from '../Modal/Modal'
+import { collection, addDoc} from 'firebase/firestore'
+import db from '../../utils/firebaseConfig'
+
 
 
 
@@ -16,7 +19,72 @@ import "../Cart/Cart.scss"
 
 const Cart  = () =>{
 
-const {cartProducts ,delteAll, removefromCart, totalPrice, contador} = useContext(CartContext)
+const [showModal, setshowModal] = useState(false)
+const {cartProducts ,delteAll, removefromCart, totalPrice} = useContext(CartContext)
+const [buySucces , setbuySucces] = useState()
+
+const [order] = useState({
+      items: cartProducts.map((product) =>{
+        return{
+           id: product.id,
+           title: product.title,
+           price: product.price
+          }}),
+      
+       buyer: {},
+       date: new Date().toLocalString(),
+      total: totalPrice
+})
+
+const [formData, setformdata] = useState({
+
+  name: '',
+  phone:'',
+  email:'',
+
+
+})
+
+
+const handleModal = (handle) =>{
+
+handle === true ? setshowModal(true) : setshowModal(false) 
+
+
+
+}
+
+const handleChange = (e) =>{
+
+  setformdata({...formData, [e.target.name] : e.target.value,})
+
+}
+
+
+
+const sendData = (e) =>{
+      
+      e.preventDefault()
+
+   
+
+       pushData({...order, buyer: formData})
+
+}
+
+const pushData = async (newOrder) =>{
+
+  const collectionOrden = collection(db,'orders')
+  const orderDoc = await addDoc(collectionOrden, newOrder)
+  console.log("Orden generada", orderDoc)
+  setbuySucces(orderDoc.id)
+  
+ 
+    
+
+}
+
+console.log(buySucces)
 
 
 
@@ -24,7 +92,7 @@ const {cartProducts ,delteAll, removefromCart, totalPrice, contador} = useContex
 
 return (
 
- <>
+ 
  
     <div className="cart-container">
      <div className="cart-left">
@@ -125,11 +193,72 @@ return (
       
 
      <Button onClick = {delteAll}>delete</Button>
+     <Button onClick={() => handleModal(true)}>Go to pay</Button>
      
+     { showModal && 
+     <Modal title={"DATOS DE CONTACTO"} close={handleModal}>
+      
+
+        {buySucces ? (
+
+          <>
+
+           <h2>Su orden se genero correctamente</h2>
+           <h3>El numero de su orden es {buySucces} </h3>
+
+          </>
+         
+        ):(
+            
+          <form onSubmit={sendData}>
+          <input 
+          type="text" 
+          name = 'name' 
+          onChange={handleChange}
+          placeholder="Name"
+          value = {formData.name}
+          />
+          
+          
+          
+          <input 
+          type="number" 
+          onChange={handleChange}
+          name ='phone'
+          placeholder="Phone" 
+          value = {formData.phone}
+          />
+          
+          
+          
+          <input 
+          type="email" 
+          onChange={handleChange}
+          name ='email' 
+          placeholder="Your e-mail adress" 
+          value = {formData.email}
+          />
+          
+          
+          
+          <Button type="sumbit">Send</Button>
+         
+
+           </form>
+
+        )}
+     
+
+   </Modal>
+
+    }
+
+      
+
 
     </div>
     
- </>
+ 
 
 
 )
