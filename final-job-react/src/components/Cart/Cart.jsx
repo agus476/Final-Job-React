@@ -32,7 +32,7 @@ const [order] = useState({
           }}),
       
        buyer: {},
-       date: new Date().toLocalString(),
+       date: new Date().toLocaleString(),
       total: totalPrice
 })
 
