@@ -190,10 +190,21 @@ return (
 
      </div>
 
+     { cartProducts.length > 0 && 
+
+<div className='extraButtons'>
+
+<Button onClick = {delteAll}>delete</Button>
+<Button onClick={() => handleModal(true)}>Go to pay</Button>
+     
+</div>
+
+
+
+}
+
       
 
-     <Button onClick = {delteAll}>delete</Button>
-     <Button onClick={() => handleModal(true)}>Go to pay</Button>
      
      { showModal && 
      <Modal title={"DATOS DE CONTACTO"} close={handleModal}>

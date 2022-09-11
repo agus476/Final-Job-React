@@ -26,7 +26,7 @@ import {Link} from 'react-router-dom'
 
 //COMPONENT NAVBAR
 
-const pages = ['About Us', 'Hats', 'T-shirts','Hoods','Contact Us'];
+const pages = ['About Us', 'Hats', 'T-shirts','Hoods'];
 
 
 export  function NavBar() {

@@ -14,8 +14,10 @@ const ItemProduct = ({data}) => {
 
     <Link  style = {{textDecoration: "none", color: 'black'}}to = {`/product/${id}`} >
     <div className='item-product'>
+          <div className='hatImage'>
+          <img  src={img} alt="Hat img" />
+          </div>
           
-          <img className='hatImage' src={img} alt="Hat img" />
           <p>{title}</p>
           <span className='price'>${price}</span>
            
