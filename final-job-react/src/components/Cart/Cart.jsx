@@ -22,6 +22,7 @@ const Cart  = () =>{
 const [showModal, setshowModal] = useState(false)
 const {cartProducts ,delteAll, removefromCart, totalPrice} = useContext(CartContext)
 const [buySucces , setbuySucces] = useState()
+const shipping = 500
 
 const [order] = useState({
       items: cartProducts.map((product) =>{
@@ -92,6 +93,7 @@ console.log(buySucces)
 
 return (
 
+ <>
  
  
     <div className="cart-container">
@@ -140,8 +142,10 @@ return (
                                         
                                           <IconButton onClick={()=>removefromCart(product.id)}><DeleteIcon /></IconButton>
                                       </div>
-          
+                                      
                                   </div>
+                                               
+                           
                                  
                                       
                         
@@ -170,11 +174,24 @@ return (
      <div className="cart-rigth">
        <div className="sumary">
        <h1>ORDER SUMARY</h1>
-        <div>
-        <span>SUBTOTAL {totalPrice} </span>
-        <span>SHIPPING</span>
+       <div>Items
+         {cartProducts.map((product)=>(
+                <div className="sumary__item"> 
+
+                      <span> {product.title} {product.price}</span>
+
+                </div>
+             
+           
+
+         ))}
+
+       </div>
+        <div><span>SUBTOTAL {totalPrice} </span>
+        <span>SHIPPING {shipping}</span>
         </div>
-        <div>TOTAL</div>
+        
+        <div>TOTAL {totalPrice + shipping }</div>
 
        
         
@@ -190,18 +207,7 @@ return (
 
      </div>
 
-     { cartProducts.length > 0 && 
-
-<div className='extraButtons'>
-
-<Button onClick = {delteAll}>delete</Button>
-<Button onClick={() => handleModal(true)}>Go to pay</Button>
-     
-</div>
-
-
-
-}
+  
 
       
 
@@ -269,9 +275,21 @@ return (
 
     </div>
     
+    { cartProducts.length > 0 && 
+
+<div className='extraButtons'>
+
+<Button onClick = {delteAll}>delete</Button>
+<Button onClick={() => handleModal(true)}>Go to pay</Button>
+     
+</div>
+
+
+
+}
  
 
-
+</>
 )
 
 
